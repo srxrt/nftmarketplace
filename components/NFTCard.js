@@ -7,10 +7,11 @@ import { COLORS, SIZES, SHADOWS, assets } from "../constants";
 
 const NFTCard = ({ data }) => {
   const navigation = useNavigation();
+
   return (
     <View
       style={{
-        backgoundColor: COLORS.white,
+        backgroundColor: COLORS.white,
         borderRadius: SIZES.font,
         marginBottom: SIZES.extraLarge,
         margin: SIZES.base,
@@ -41,6 +42,7 @@ const NFTCard = ({ data }) => {
           titleSize={SIZES.large}
           subTitleSize={SIZES.small}
         />
+
         <View
           style={{
             marginTop: SIZES.font,
@@ -50,7 +52,11 @@ const NFTCard = ({ data }) => {
           }}
         >
           <EthPrice price={data.price} />
-          <RectButton />
+          <RectButton
+            minWidth={120}
+            fontSize={SIZES.font}
+            handlePress={() => navigation.navigate("Details", { data })}
+          />
         </View>
       </View>
     </View>
