@@ -7,7 +7,7 @@ import {
 	FlatList,
 } from "react-native";
 
-import { COLORS, SIZES, SHADOWS, FONTS, assets } from "../constants";
+import { COLORS, SIZES, SHADOWS, FONTS, assets, android } from "../constants";
 import {
 	CircleButton,
 	RectButton,
@@ -28,6 +28,10 @@ const DetailsHeader = ({ data, navigation }) => (
 				height: "100%",
 			}}
 		/>
+		<CircleButton
+			imgUrl={asstets.left}
+			handlePress={() => navigation.goBack()}
+		/>
 	</View>
 );
 
@@ -35,7 +39,7 @@ const Details = ({ route, navigation }) => {
 	const { data } = route.params;
 
 	return (
-		<SafeAreaView style={{ flex: 1 }}>
+		<SafeAreaView style={android.droidSafeArea}>
 			<FocusedStatusBar
 				barStyle="dark-content"
 				backgroundColor="transparent"

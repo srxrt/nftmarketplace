@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
-import * as Font from "expo-font";
+import { useFonts } from "expo-font";
+
 import Home from "./screens/Home";
 import Details from "./screens/Details";
 
-const Stack = createStackNavigator();
 const theme = {
 	...DefaultTheme,
 	colors: {
@@ -13,34 +13,26 @@ const theme = {
 		background: "transparent",
 	},
 };
+
+const Stack = createStackNavigator();
+
 const App = () => {
-	const [loaded, setLoaded] = useState(false);
-	const fetchFonts = () => {
-		Font.loadAsync({
-			InterBold: require("./assets/fonts/Inter-Bold.ttf"),
-			InterSemiBold: require("./assets/fonts/Inter-SemiBold.ttf"),
-			InterMedium: require("./assets/fonts/Inter-Medium.ttf"),
-			InterRegular: require("./assets/fonts/Inter-Regular.ttf"),
-			InterLight: require("./assets/fonts/Inter-Light.ttf"),
-		});
-	};
+	const [loaded] = useFonts({
+		InterBold: require("./assets/fonts/Inter-Bold.ttf"),
+		InterSemiBold: require("./assets/fonts/Inter-SemiBold.ttf"),
+		InterMedium: require("./assets/fonts/Inter-Medium.ttf"),
+		InterRegular: require("./assets/fonts/Inter-Regular.ttf"),
+		InterLight: require("./assets/fonts/Inter-Light.ttf"),
+	});
 
-	useEffect(() => {
-		async function getFonts() {
-			await fetchFonts();
-			setLoaded(true);
-		}
-		getFonts();
-	}, []);
-
-	if (!loaded) {
-		return null;
-	}
+	if (!loaded) return null;
 
 	return (
 		<NavigationContainer theme={theme}>
 			<Stack.Navigator
-				screenOptions={{ headerShown: false }}
+				screenOptions={{
+					headerShown: false,
+				}}
 				initialRouteName="Home"
 			>
 				<Stack.Screen name="Home" component={Home} />
