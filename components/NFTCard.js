@@ -1,10 +1,10 @@
 import React from "react";
-import { View, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { View, Image } from "react-native";
 
-import { CircleButton, RectButton } from "./Button";
-import { SubInfo, NFTTitle, EthPrice } from "./SubInfo";
 import { COLORS, SIZES, SHADOWS, assets } from "../constants";
+import { SubInfo, EthPrice, NFTTitle } from "./SubInfo";
+import { RectButton, CircleButton } from "./Button";
 
 const NFTCard = ({ data }) => {
 	const navigation = useNavigation();
@@ -19,7 +19,12 @@ const NFTCard = ({ data }) => {
 				...SHADOWS.dark,
 			}}
 		>
-			<View style={{ width: "100%", height: 250 }}>
+			<View
+				style={{
+					width: "100%",
+					height: 250,
+				}}
+			>
 				<Image
 					source={data.image}
 					resizeMode="cover"

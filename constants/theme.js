@@ -20,7 +20,7 @@ export const SIZES = {
 export const android = StyleSheet.create({
 	droidSafeArea: {
 		flex: 1,
-		backgroundColor: COLORS.primary,
+		backgroundColor: COLORS.white,
 		paddingTop: Platform.OS === "android" ? 0 : 0,
 	},
 });
